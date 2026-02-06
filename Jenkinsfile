@@ -3,41 +3,26 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
+        stage('Clone Repo') {
             steps {
-                echo 'Cloning repository...'
-                checkout scm
+                git branch: 'main',
+                    url: ''
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Build step (No build needed for Python)'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests (if any)'
+                echo 'Building...'
+                bat 'echo Build completed'
             }
         }
 
         stage('Run Program') {
             steps {
-                echo 'Running Python file'
-                sh 'star_pattern.py'
+                bat 'star_pattern.py'
             }
         }
 
     }
-
-    post {
-        success {
-            echo 'Pipeline executed successfully!'
-        }
-
-        failure {
-            echo 'Pipeline failed!'
-        }
-    }
 }
+

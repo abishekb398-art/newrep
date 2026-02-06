@@ -2,25 +2,11 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Clone') {
+        stage('Test') {
             steps {
-                echo 'Cloning Repository'
+                bat 'echo Hello Jenkins on Windows'
             }
         }
-
-        stage('Build') {
-            steps {
-                echo 'Building Project'
-            }
-        }
-
-        stage('Run') {
-            steps {
-                echo 'Running Python File'
-                sh 'python star_pattern.py'
-            }
-        }
-
     }
 }
+
